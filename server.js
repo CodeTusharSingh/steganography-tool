@@ -8,7 +8,13 @@ const cors = require('cors');
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+  credentials: true,
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+   optionsSuccessStatus: 204,
+}));
 const upload = multer({ dest: 'uploads/' });
 
 app.use(express.static('public'));
